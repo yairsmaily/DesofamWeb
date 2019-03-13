@@ -196,20 +196,22 @@
         <!-- Grid column -->
         <div class="col-md-5 mt-md-0 mt-3">
           <!-- Content -->
+
+          <!-- ***Contactanos*** -->
           <h5 class="text-uppercase"><label for="">Contáctanos</label></h5>
           <!--<p>Here you can use rows and columns here to organize your footer content.</p>-->
           <form>
             <div class="form-group">
               <label for="exampleFormControlInput1">Nombre</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="nombre">
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" ng-model="peticion.nombre" required/>
             </div>
             <div class="form-group">
               <label for="exampleFormControlInput1">Correo electrónico</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="correo@ejemplo.com">
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="correo@ejemplo.com" ng-model="peticion.email" required/>
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Exprésanos tu duda o inconveniente</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ng-model="peticion.mensaje" requerid/></textarea>
             </div>
             <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1" ng-click="showTicket = !showTicket">
@@ -217,7 +219,7 @@
             </div>
             <div ng-show="showTicket">
               <div class="form-group">
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="número de ticket">
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Número de ticket" ng-model="peticion.id" required/>
               </div>
             </div>
 
@@ -278,6 +280,16 @@
 <script type="text/javascript">
   var app = angular.module('app', []);
   app.controller('ctrl', function($scope, $http, $location){
+    $scope.peticion={};
 
+    $scope.guardar=function(){
+      http.post('/guardar',$scope.peticion).then(function(response){
+
+        }, function(errorResponse){
+
+        }
+      );
+    }
+    
   });
 </script>
