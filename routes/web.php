@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::post('/guadar','peticion@store');
+Route::post('/guardar','peticion@store');

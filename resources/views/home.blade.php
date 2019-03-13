@@ -73,8 +73,8 @@
               <span class="sr-only">Next</span>
             </a>
             </div>
-          </div>
-          </div>
+          <!-- </div> -->
+          <!-- </div> -->
 
       <!--<div class="bgimg-1">
         <div class="caption">
@@ -283,9 +283,9 @@
     $scope.peticion={};
 
     $scope.guardar=function(){
-
+      // alert('Si entre');
       $http.post('/guardar',$scope.peticion).then(function(response){
-
+            $scope.peticion={};
         }, function(errorResponse){
 
         }
