@@ -203,15 +203,15 @@
           <form>
             <div class="form-group">
               <label for="exampleFormControlInput1">Nombre</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" ng-model="peticion.nombre" required/>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" ng-model="peticion.nombre">
             </div>
             <div class="form-group">
               <label for="exampleFormControlInput1">Correo electrónico</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="correo@ejemplo.com" ng-model="peticion.email" required/>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="correo@ejemplo.com" ng-model="peticion.email">
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Exprésanos tu duda o inconveniente</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ng-model="peticion.mensaje" requerid/></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ng-model="peticion.mensaje"></textarea>
             </div>
             <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1" ng-click="showTicket = !showTicket">
@@ -219,11 +219,11 @@
             </div>
             <div ng-show="showTicket">
               <div class="form-group">
-                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Número de ticket" ng-model="peticion.id" required/>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Número de ticket" ng-model="peticion.id">
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="button" class="btn btn-primary" ng-click="guardar()">Enviar</button>
           </form>
         </div>
         <!-- Grid column -->
@@ -274,22 +274,23 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
     </div>
-    <script type="text/javascript" src="{{asset('/js/angular.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/angular.js')}}"></script>
   </body>
 </html>
-<script type="text/javascript">
-  var app = angular.module('app', []);
+<script>
+  var app=angular.module('app', []);
   app.controller('ctrl', function($scope, $http, $location){
     $scope.peticion={};
 
     $scope.guardar=function(){
-      http.post('/guardar',$scope.peticion).then(function(response){
+
+      $http.post('/guardar',$scope.peticion).then(function(response){
 
         }, function(errorResponse){
 
         }
       );
     }
-    
+
   });
 </script>
