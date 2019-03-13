@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Peticiones;
+
+use App\Http\Controllers\Peticion;
+
 class Peticion extends Controller
 {
     /**
@@ -34,7 +38,13 @@ class Peticion extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos=new Peticiones();
+
+        $datos->nombre=$request->input('nombre');
+        $datos->email=$request->input('email');
+        $datos->mensaje=$request->textarea('mensaje');
+
+        $datos->save();
     }
 
     /**
